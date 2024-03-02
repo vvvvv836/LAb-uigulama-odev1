@@ -1,0 +1,71 @@
+class Kossar {
+    String name;
+    int time;
+
+    public Kossar(String name, int time) {
+        this.name = name;
+        this.time = time;
+    }
+}
+
+public class Tournament {
+    public static void main(String[] args) {
+        Kossar[] kossars = {
+                new Kossar("Kadir", 341),
+                new Kossar("Gökhan", 273),
+                new Kossar("Hakan", 278),
+                new Kossar("Suzan", 329),
+                new Kossar("Pinar", 445),
+                new Kossar("Mehmet", 402),
+                new Kossar("Ali", 388),
+                new Kossar("Emel", 270),
+                new Kossar("Firat", 243),
+                new Kossar("James", 334),
+                new Kossar("Jale", 412),
+                new Kossar("Ersin", 393),
+                new Kossar("Deniz", 299),
+                new Kossar("Gözde", 343),
+                new Kossar("Anıl", 317),
+                new Kossar("Burak", 265)
+        };
+
+
+        uciyiKossars(kossars);
+
+
+        Kossarclass(kossars);
+    }
+
+    public static void uciyiKossars(Kossar[] kossars) {
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < kossars.length - i - 1; j++) {
+                if (kossars[j].time > kossars[j + 1].time) {
+
+                    Kossar temp = kossars[j];
+                    kossars[j] = kossars[j + 1];
+                    kossars[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println("Birinci: " + kossars[0].name + " " + kossars[0].time + "'");
+        System.out.println("İkinci: " + kossars[1].name + " " + kossars[1].time + "'");
+        System.out.println("Üçüncü: " + kossars[2].name + " " + kossars[2].time + "'");
+    }
+
+    public static void Kossarclass(Kossar[] kossars) {
+        int classA = 0, classB = 0, classC = 0;
+        for (Kossar runner : kossars) {
+            if (runner.time >= 200 && runner.time <= 299) {
+                classA++;
+            } else if (runner.time >= 300 && runner.time <= 399) {
+                classB++;
+            } else {                classC++;
+            }
+        }
+        System.out.println("A -> " + classA);
+        System.out.println("B -> " + classB);
+        System.out.println("C -> " + classC);
+    }
+}
